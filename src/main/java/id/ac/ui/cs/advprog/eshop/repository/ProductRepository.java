@@ -29,6 +29,13 @@ public class ProductRepository {
         return product;
     }
 
+    public void delete(UUID id) {
+        Product product = findById(id);
+        if (product != null) {
+            productData.remove(product);
+        }
+    }
+
     public Product findById(UUID id) {
         for (Product product : productData) {
             if (product.getProductId().equals(id)) {
