@@ -13,11 +13,12 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product create(Product product) {
+        product.setProductId(UUID.randomUUID().toString());
         productData.add(product);
         return product;
     }
 
-    public Product edit(Product changes, UUID id) {
+    public Product edit(Product changes, String id) {
         Product product = findById(id);
 
         // Set name & quantity
@@ -29,14 +30,14 @@ public class ProductRepository {
         return product;
     }
 
-    public void delete(UUID id) {
+    public void delete(String id) {
         Product product = findById(id);
         if (product != null) {
             productData.remove(product);
         }
     }
 
-    public Product findById(UUID id) {
+    public Product findById(String id) {
         for (Product product : productData) {
             if (product.getProductId().equals(id)) {
                 return product;
