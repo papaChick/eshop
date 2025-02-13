@@ -38,7 +38,7 @@ Writing unit tests ensures my code is valid and functions as intended. I've real
 
 Determining the number of unit tests required for a class depends on several factors, including the complexity of the class, the number of methods, and the potential edge cases that need to be covered. A rule-of-thumb is to write unit tests for each methods and additional tests to cover the potential edge cases and error handling.
 
-To ensure that our unit tests is enough to verify the program, it's best to utilize code coverage tools. Code coverage, as its name suggests, measures how much of your code is executed while running tests. 100% code coverage doesn't imply that your code is bug-free and invulnerable, it simply suggests that each line of code within your code is executed. Therefore, code coverage cannot be used as proof that the code is flawless, it simply reflects the extent of test execution.
+To ensure that our unit tests is enough to verify the program, it's best to utilize code coverage tools. Code coverage, as its name suggests, measures how much of your code is executed while running tests. 100% code coverage doesn't imply that your code is bug-free and invulnerable, it simply suggests that each line within your code is executed. Therefore, code coverage cannot be used as proof that the code is flawless, it simply reflects the extent of test execution.
 
 ### Part 2
 The new functional test suite would negatively impact the code cleanliness. Duplicating setup and instance variables from `CreateProductFunctionalTest.java` leads to redundant code, increasing the code size and introduces higher risk of error for future maintenance.
