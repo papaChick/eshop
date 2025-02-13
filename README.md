@@ -15,7 +15,7 @@ public Product edit(Product changes, UUID id) {
 ```
 "Changes" clearly states that it is an object of product which its attributes are the incoming changes inputted by the user, and "product" states that it is the object being modified.
 
-The functions in the source code are broken down to it's smallest form. It's written to perform a single task and be small in size. For example:
+The functions in the source code are broken down to its smallest form. It's written to perform a single task and be small in size. For example:
 ```java
 public Product findById(UUID id) {
     for (Product product : productData) {
@@ -36,7 +36,7 @@ The web project is a small one, it only have 3 features, which are Create, Updat
 ### Part 1
 Writing unit tests ensures my code is valid and functions as intended. I've realized that unit and functional testing are essential in software development. They speed up testing, making the process more efficient. Without automation, testing would be slow and time-consuming.
 
-Determining the number of unit tests required for a class depends on several factors, including the complexity of the class, and the number of methods, and the potential edge cases that need to be covered. A rule-of-thumb is to write unit tests for each methods and additional tests to cover the potential edge cases and error handling.
+Determining the number of unit tests required for a class depends on several factors, including the complexity of the class, the number of methods, and the potential edge cases that need to be covered. A rule-of-thumb is to write unit tests for each methods and additional tests to cover the potential edge cases and error handling.
 
 To ensure that our unit tests is enough to verify the program, it's best to utilize code coverage tools. Code coverage, as its name suggests, measures how much of your code is executed while running tests. 100% code coverage doesn't imply that your code is bug-free and invulnerable, it simply suggests that each line of code within your code is executed. Therefore, code coverage cannot be used as proof that the code is flawless, it simply reflects the extent of test execution.
 
