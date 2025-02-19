@@ -111,6 +111,9 @@ class ProductRepositoryTest {
         assertEquals(product.getProductId(), searchProduct.getProductId());
         assertEquals(product.getProductName(), searchProduct.getProductName());
         assertEquals(product.getProductQuantity(), searchProduct.getProductQuantity());
+
+        searchProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd8");
+        assertNull(searchProduct);
     }
 
     @Test
