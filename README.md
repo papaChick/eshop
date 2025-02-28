@@ -49,7 +49,7 @@ To improve this, a better approach is to create a parent class that contains the
 
 </details>
 
-<details open>
+<details>
     <summary><h1>Tutorial 02</h1></summary>
 
 ## Reflection 1
@@ -112,5 +112,80 @@ public interface ProductService {
 The current implementation meets the principles of Continuous Integration because every push and pull request triggers an automated test suite and code quality analysis using GitHub Actions. Not to mention, the whole test suite has a test coverage of 100%. It also implements Continuous Deployment by automatically deploying the latest changes to a PaaS, ensuring that the latest working version is always available online. 
 
 
+</details>
+<details open>
+<summary><h1>Tutorial 03</h1></summary>
+
+## Implemented SOLID Principles
+### 1. SRP
+SRP states that a class should have only one reason to change. In my code, the controllers, services, and repositories follows SRP. Each class has a single responsibility:
+
+- Controllers handle HTTP requests.
+- Services contain business logic.
+- Repositories handle data access.
+
+### 2. OCP
+OCP states that software entities should be open for extension but closed for modification. My implementation use interfaces to allow easy extension without modifying existing code.
+
+### 3. LSP
+LSP states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. My current code implements LSP as the service implementations can replace their interfaces without issues.
+
+### 4. ISP
+ISP states that clients should not be forced to depend on interfaces they do not use. The interfaces are already specific and do not force clients to depend on unused methods.
+
+### 5. DIP
+DIP states that high-level modules should not depend on low-level modules but on abstractions. My code uses Spring's `@Autowired` annotation to ensure high-level modules (controllers and services) depend on abstractions (interfaces) rather than concrete implementations.
+
+## Advantages of Applying SOLID Principles
+
+### 1. SRP
+
+<b>Advantage:</b> Each class has a single responsibility, making the code easier to understand, maintain, and test.  
+<b>Example:</b> In the `CarController`, the class is only responsible for handling HTTP requests related to cars. The business logic is handled by the `CarService`, and data access is managed by the `CarRepository`. This separation makes the code more modular and easier to manage.
+
+### 2. OCP
+
+<b>Advantage:</b> Classes are open for extension but closed for modification, allowing new functionality to be added without changing source code.  
+<b>Example:</b> By using interfaces for services and repositories, new implementations can be added without modifying the source code. For instance, if a new type of repository is needed, it can be implemented and injected without changing the existing `CarServiceImpl`.
+
+### 3. LSP
+
+<b>Advantage:</b> Subclasses can replace their base classes without affecting the correctness of the program, ensuring that the system remains consistent and reliable.  
+<b>Example:</b> The `CarServiceImpl` can be replaced with any other implementation of `CarService` without affecting the `CarController`. This ensures that the controller can work with any service implementation that extends the `CarService` interface.
+
+### 4. ISP
+
+<b>Advantage:</b> Clients are not forced to depend on interfaces they do not use, leading to more focused and easier-to-understand interfaces.  
+<b>Example:</b> By defining specific interfaces for services and repositories, each interface contains only the methods relevant to its purpose. This prevents clients from being burdened with unnecessary methods.
+
+### 5. DIP
+
+<b>Advantage:</b> High-level modules do not depend on low-level modules but on abstractions, making the system more flexible and easier to modify.  
+<b>Example:</b> The `CarController` depends on the `CarService` interface rather than a specific implementation. This allows different implementations of `CarService` to be used without changing the controller code.
+
+## Disadvantages of Not Applying SOLID Principles
+### 1. SRP
+
+<b>Disadvantage:</b> Classes with multiple responsibilities become complex and difficult to maintain.  
+<b>Example:</b> If the `CarController` handled both HTTP requests and business logic, any change in business logic would require changes in the controller, increasing the risk of introducing bugs.
+
+### 2. OCP
+<b>Disadvantage:</b> Modifying existing code to add new functionality can introduce bugs and make the system less stable.  
+<b>Example:</b> Without OCP, adding a new type of repository would require modifying the current `CarServiceImpl`, increasing the risk of breaking existing functionality.
+
+### 3. LSP
+
+<b>Disadvantage:</b> Subclasses that do not follow LSP can cause unexpected behavior and bugs.  
+<b>Example:</b> If a subclass of `CarService` does not correctly implement the methods of the interface, it could cause the `CarController` to behave incorrectly, leading to runtime errors.
+
+### 4. ISP
+
+<b>Disadvantage:</b> Large interfaces with many methods can be difficult to implement and understand.  
+<b>Example:</b> If the `CarService` interface contained methods unrelated to car management, implementing the interface would be more complex and error-prone.
+
+### 5. DIP
+
+<b>Disadvantage:</b> High-level modules that depend on low-level modules are tightly coupled, making the system rigid and difficult to modify.  
+<b>Example:</b> If the `CarController` directly depended on a specific implementation of `CarService`, changing the service implementation would require changes in the controller, reducing flexibility and increasing maintenance effort.
 </details>
 
