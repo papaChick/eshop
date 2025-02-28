@@ -50,7 +50,7 @@ To improve this, a better approach is to create a parent class that contains the
 </details>
 
 <details open>
-    <summary><h1>Tutorial 2</h1></summary>
+    <summary><h1>Tutorial 02</h1></summary>
 
 ## Reflection 1
 >List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
