@@ -2,7 +2,8 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import lombok.Getter;
 import lombok.Setter;
-
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -38,10 +39,9 @@ public class Payment {
     }
 
     private boolean validatePaymentData(Map<String, String> paymentData) {
-        String[] methodList = {"VOUCHER", "COD"};
-        if (this.method.equals(methodList[0])) {
+        if (this.method.equals(PaymentMethod.VOUCHER.getValue())) {
             return validateVoucherPayment(paymentData.get("voucherCode"));
-        } else if (this.method.equals(methodList[1])) {
+        } else if (this.method.equals(PaymentMethod.COD.getValue())) {
             return validateCODPayment(paymentData);
         } else {
             return false;
@@ -77,15 +77,13 @@ public class Payment {
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"SUCCESS", "REJECTED"};
-        if (Arrays.asList(statusList).contains(status)) {
+        if (PaymentStatus.contains(status)) {
             this.status = status;
         }
     }
 
     public void setMethod(String method) {
-        String[] methodList = {"VOUCHER", "COD"};
-        if (Arrays.asList(methodList).contains(method)) {
+        if (PaymentMethod.contains(method)) {
             this.method = method;
         }
     }
