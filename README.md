@@ -113,7 +113,7 @@ The current implementation meets the principles of Continuous Integration becaus
 
 
 </details>
-<details open>
+<details>
 <summary><h1>Tutorial 03</h1></summary>
 
 ## Implemented SOLID Principles
@@ -187,5 +187,53 @@ DIP states that high-level modules should not depend on low-level modules but on
 
 <b>Disadvantage:</b> High-level modules that depend on low-level modules are tightly coupled, making the system rigid and difficult to modify.  
 <b>Example:</b> If the `CarController` directly depended on a specific implementation of `CarService`, changing the service implementation would require changes in the controller, reducing flexibility and increasing maintenance effort.
+</details>
+
+<details open>
+    <summary><h1>Tutorial 04</h1></summary>
+
+## Based on Percival (2017) proposed self-reflective questions:
+
+### Did the tests help you understand the requirements better?
+
+Yes, writing the tests clarified the requirements and helped me understand what the code should do. For example, in `ProductControllerTest`, the tests clearly define the expected behavior of the product creation and editing functionalities.
+
+### Did the tests drive the design of your code?
+
+Yes, the tests influenced the structure and design of the code, leading to a more modular and maintainable design. For instance, the `OrderServiceImplTest` and 1ProductServiceImplTest` show how the service layer interacts with the repository layer.
+
+### Did the tests give you confidence to refactor?
+
+Yes, having tests in place gave me the confidence to make changes and refactor the code without fear of introducing bugs. The tests in `OrderRepositoryTest` and `ProductRepositoryTest` ensure that the repository methods work correctly.
+
+### Did the tests catch bugs?
+
+Yes, the tests were effective in catching bugs and preventing defects from reaching production. For example, the `OrderTest` includes tests for invalid order statuses, which helps catch potential issues early.
+
+### Were the tests easy to write and maintain?
+
+Yes, the tests were straightforward to write and maintain.
+
+## Reflection on F.I.R.S.T. Principles
+
+### Fast:
+
+The tests generally run quickly, but some functional tests involving Selenium might be slower.
+
+### Independent:
+
+Most tests are independent and do not rely on the state left by other tests.
+
+### Repeatable:
+
+The tests produce the same results every time they run, ensuring repeatability. This is evident in the consistent assertions and mock setups.
+
+### Self-Validating:
+
+The tests have clear pass/fail results without requiring manual inspection. The method assertEquals and assertThrows is utilized ensures self-validation.
+
+### Timely:
+
+The tests were written at the right time, ideally before the implementation. Therefore, it adheres the timely aspect.
 </details>
 
