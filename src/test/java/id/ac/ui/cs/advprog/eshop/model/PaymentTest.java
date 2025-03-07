@@ -112,4 +112,37 @@ public class PaymentTest {
                     "Expected exception for case: " + entry.getKey());
         }
     }
+
+    @Test
+    void testInvalidCashOnDeliveryConstructor() {
+        Map<String, Map<String, String>> invalidCODCases = new HashMap<>();
+
+        // Cases without null values
+        invalidCODCases.put("MISSING ADDRESS", Map.of("deliveryFee", "10000"));
+        invalidCODCases.put("MISSING DELIVERY FEE", Map.of("address", "Depok"));
+        invalidCODCases.put("EMPTY ADDRESS", Map.of("address", "", "deliveryFee", "10000"));
+        invalidCODCases.put("EMPTY DELIVERY FEE", Map.of("address", "Depok", "deliveryFee", ""));
+
+        // Cases with null values (use HashMap to allow nulls)
+        Map<String, String> nullAddressCase = new HashMap<>();
+        nullAddressCase.put("address", null);
+        nullAddressCase.put("deliveryFee", "10000");
+
+        Map<String, String> nullDeliveryFeeCase = new HashMap<>();
+        nullDeliveryFeeCase.put("address", "Depok");
+        nullDeliveryFeeCase.put("deliveryFee", null);
+
+        invalidCODCases.put("NULL ADDRESS", nullAddressCase);
+        invalidCODCases.put("NULL DELIVERY FEE", nullDeliveryFeeCase);
+
+        // Iterate over cases
+        for (var entry : invalidCODCases.entrySet()) {
+            Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                new Payment("8be55aba-892b-4fab-adad-de24e827c104", order, "COD", "SUCCESS", entry.getValue());
+            });
+
+            assertEquals("paymentData is not valid", exception.getMessage(),
+                    "Failed for case: " + entry.getKey());
+        }
+    }
 }
