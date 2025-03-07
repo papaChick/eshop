@@ -28,19 +28,13 @@ public class PaymentRepository {
     }
 
     public Payment findById(String id) {
-        for (Payment savedPayment : paymentsData) {
-            if (savedPayment.getId().equals(id)) {
-                return savedPayment;
-            }
-        }
-        return null;
+        return paymentsData.stream()
+                .filter(payment -> payment.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     public List<Payment> findAll() {
-        List<Payment> result = new ArrayList<>();
-        for (Payment payment : paymentsData) {
-            result.add(payment);
-        }
-        return result;
+        return new ArrayList<>(paymentsData);
     }
 }
